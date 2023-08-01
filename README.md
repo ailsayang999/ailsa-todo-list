@@ -1,6 +1,6 @@
 # Ailsa's Todo List X MVC with React
 
-![Project Image]()
+![Project Image](https://github.com/ailsayang999/ailsa-todo-list/blob/main/public/ailsa-todo-list-demonstration-picture.png)
 This simple web application can help the user to keep track of their todo list.
 
 ## Installation
