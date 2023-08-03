@@ -10,10 +10,12 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { login } from 'api/auth';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   //handle點擊登入按鈕時的event，在點擊登入的button時會去呼叫handleClick這個function，handleClick這個function會再去呼叫auth.js裡面的login非同步function
   const handleClick = async () => {
@@ -43,6 +45,10 @@ const LoginPage = () => {
           icon: 'success',
           showConfirmButton: false,
         });
+
+        //在登入成功後頁面navigate到todo頁面
+        navigate('/todo');
+
         return;
       }
 

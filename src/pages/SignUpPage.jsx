@@ -16,6 +16,7 @@ const SignUpPage = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleClick = async () => {
     if (username.length === 0) {
@@ -43,6 +44,9 @@ const SignUpPage = () => {
         icon: 'success',
         showConfirmButton: false,
       });
+
+      //在註冊成功後頁面navigate到todo頁面
+      navigate('/todo');
 
       return;
     }
