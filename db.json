@@ -1,0 +1,39 @@
+{
+  "todos": [
+    {
+      "title": "Learn react-router",
+      "isDone": true,
+      "id": 1
+    },
+    {
+      "title": "Learn to create custom hooks",
+      "isDone": true,
+      "id": 2
+    },
+    {
+      "title": "Learn to use context",
+      "isDone": true,
+      "id": 3
+    },
+    {
+      "title": "Learn to implement auth",
+      "isDone": true,
+      "id": 4
+    },
+    {
+      "title": "Learn postman",
+      "isDone": true,
+      "id": 5
+    },
+    {
+      "title": "Learn CS50",
+      "isDone": false,
+      "id": 6
+    },
+    {
+      "title": "swim",
+      "isDone": false,
+      "id": 7
+    }
+  ]
+}
