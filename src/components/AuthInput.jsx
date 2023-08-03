@@ -22,11 +22,18 @@ const StyledInput = styled.input`
   border-radius: 0px;
 `;
 
-const AuthInput = () => {
+//在input type的部分，如果我們傳入type是password的話，使用者在輸入密碼的時候會是隱藏的狀態
+//input裡面值有變化的時候，觸發change的這個event，change event被觸發的時候，就會去呼叫onChange的這個props
+const AuthInput = ({ type, label, value, placeholder, onChange }) => {
   return (
     <StyledContainer>
-      <StyledLabel>label</StyledLabel>
-      <StyledInput type="text" placeholder="placeholder" />
+      <StyledLabel>{label}</StyledLabel>
+      <StyledInput
+        type={type || 'text'}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      />
     </StyledContainer>
   );
 };
