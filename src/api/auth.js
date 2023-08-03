@@ -12,7 +12,7 @@ export const login = async ({ username, password }) => {
     });
 
     //我們可以在這裡console.log一下看後端傳來的data有什麼
-    console.log(data)
+    console.log(data);
 
     //我們用解構的方式取到data裡面authToken的值
     const { authToken } = data;
@@ -24,6 +24,30 @@ export const login = async ({ username, password }) => {
     //登入失敗的話，我也必須讓我的頁面知道，並把後段的response data(這裡會是fail的data)給回傳給頁面
     return data;
   } catch (error) {
-    console.error("[Login Failed]:",error);
+    console.error('[Login Failed]:', error);
+  }
+};
+
+export const register = async ({ username, email, password }) => {
+  try {
+    //相較於login多了一個email的payload
+    const { data } = await axios.post(`${authURL}/register`, {
+      username,
+      email,
+      password,
+    });
+
+    //我們可以在這裡console.log一下看後端傳來的data有什麼
+    console.log(data);
+
+    const { authToken } = data;
+
+    if (authToken) {
+      return { success: true, ...data };
+    }
+
+    return data;
+  } catch (error) {
+    console.error('[Register Failed]: ', error);
   }
 };
