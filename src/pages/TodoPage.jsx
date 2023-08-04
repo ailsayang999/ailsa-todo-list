@@ -97,17 +97,17 @@ const TodoPage = () => {
     const currentTodo = todos.find((todo) => todo.id === id);
 
     try {
-      const newTodo = await patchTodo({
+      await patchTodo({
         id,
         isDone: !currentTodo.isDone,
       }); //可以看到Toggle只有改到isDone的true false，所以傳給patchTodo的payload只有id跟isDone的值
 
       setTodos((prevTodos) => {
         return prevTodos.map((todo) => {
-          if (todo.id === newTodo.id) {
+          if (todo.id === id) {
             return {
               ...todo,
-              isDone: newTodo.isDone,
+              isDone: !todo.isDone,
             };
           }
           return todo; //其他todo原封不動傳回去
