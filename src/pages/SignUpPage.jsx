@@ -6,9 +6,9 @@ import {
 } from 'components/common/auth.styled';
 import { ACLogoIcon } from 'assets/images';
 import { AuthInput } from 'components';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { register } from 'api/auth';
+import { checkPermission, register } from 'api/auth';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 
@@ -58,6 +58,27 @@ const SignUpPage = () => {
       showConfirmButton: false,
     });
   };
+
+  // 要把驗證每一頁的token是否為有效的function，放到這個頁面上
+  useEffect(() => {
+    const checkTokenIsValid = async () => {
+      // 去localStorage取 authToken
+      const authToken = localStorage.getItem('authToken');
+      // 如果authToken不存在的話（比如說登出的時後）代表它就是一個為驗證未登入的狀態
+      if (!authToken) {
+        // 如果authToken不存在，對於SignUp頁面，只要return，停留在當前頁面就好
+        return;
+      }
+      // 當我們的authToken是存在的話(使用者有登入的時候)，就把authToken給checkPermission檢查，他會回傳是否是有效的登入(會回傳response.data.success，那這邊success裡面可能是true或false，這個boolean會被放到result裡面)
+      const result = await checkPermission(authToken);
+      //如果這個authToken是有效的話，我們不應該停留在註冊頁面，要導引到todo頁面
+      if (result) {
+        navigate('/todo');
+      }
+    };
+    //當就執行checkTokenIsValid
+    checkTokenIsValid();
+  }, [navigate]); //因為有用到navigate這個function，所以就把它放到useEffect的dependency上
 
   return (
     <AuthContainer>

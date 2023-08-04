@@ -1,17 +1,21 @@
 import { Footer, Header, TodoCollection, TodoInput } from 'components';
 import { useState, useEffect } from 'react';
 import { getTodos, createTodo, patchTodo, deleteTodo } from '../api/todos';
+import { useNavigate } from 'react-router-dom';
+import { checkPermission } from '../api/auth';
 
 const TodoPage = () => {
   const [inputValue, setInputValue] = useState('');
   const [todos, setTodos] = useState([]);
+  const todoNums = todos.length;
+  const navigate = useNavigate();
 
   //監聽器：handleChange
   const handleChange = (value) => {
     setInputValue(value);
   };
 
-//監聽器：handleAddTodo
+  //監聽器：handleAddTodo
   const handleAddTodo = async (inputValue) => {
     if (inputValue.length === 0) {
       return;
@@ -91,7 +95,7 @@ const TodoPage = () => {
     const currentTodo = todos.find((todo) => todo.id === id);
 
     try {
-     const newTodo = await patchTodo({
+      const newTodo = await patchTodo({
         id,
         isDone: !currentTodo.isDone,
       }); //可以看到Toggle只有改到isDone的true false，所以傳給patchTodo的payload只有id跟isDone的值
@@ -156,7 +160,7 @@ const TodoPage = () => {
   //監聽器：handleDelete {id,title}是解構賦值
   const handleDelete = async (id) => {
     try {
-      await deleteTodo({ id });
+      await deleteTodo(id);
       setTodos((prevTodo) => prevTodo.filter((todo) => todo.id !== id));
     } catch (err) {
       console.error(err);
@@ -178,6 +182,27 @@ const TodoPage = () => {
     getTodosAsync();
   }, []); //後面的dependency讓他是空的，因為只要在畫面一開始被渲染的時候才做操作
 
+  // 要把驗證每一頁的token是否為有效的function，放到這個頁面上
+  useEffect(() => {
+    const checkTokenIsValid = async () => {
+      // 去localStorage取 authToken
+      const authToken = localStorage.getItem('authToken');
+      // 如果authToken不存在的話（比如說登出的時後）代表它就是一個為驗證未登入的狀態
+      if (!authToken) {
+        // 如果authToken不存在，對於Todo頁面，不應停留在當前頁面，要navigate到login
+        navigate('/login');
+      }
+      // 當我們的authToken是存在的話(使用者有登入的時候)，就把authToken給checkPermission檢查，他會回傳是否是有效的登入(會回傳response.data.success，那這邊success裡面可能是true或false，這個boolean會被放到result裡面)
+      const result = await checkPermission(authToken);
+      //如果這個authToken是無效的話，我們不應該停留在todo頁面，要導引到login頁面
+      if (!result) {
+        navigate('/login');
+      }
+    };
+    //當就執行checkTokenIsValid
+    checkTokenIsValid();
+  }, [navigate]); //因為有用到navigate這個function，所以就把它放到useEffect的dependency上
+
   return (
     <div>
       TodoPage
@@ -195,7 +220,7 @@ const TodoPage = () => {
         onSave={handleSave}
         onDelete={handleDelete}
       />
-      <Footer todos={todos} />
+      <Footer numOfTodos={todoNums} />
     </div>
   );
 };

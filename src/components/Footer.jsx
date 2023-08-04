@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -31,11 +32,21 @@ const StyledButton = styled.button`
   }
 `;
 
-const Footer = ({ todos }) => {
+const Footer = ({ numOfTodos }) => {
+  //登出之後頁面跳轉到login頁面
+  const navigate = useNavigate()
+
+
+  //登入的話是localStorage會儲存token，那登出的話是localStorage裡的token要做移除
+  const handleClick = () => {
+    localStorage.removeItem('authToken');
+    //登出之後頁面跳轉到login頁面
+    navigate("/login")
+  };
   return (
     <StyledFooter>
-      <p>剩餘項目數： {todos.length}</p>
-      <StyledButton>登出</StyledButton>
+      <p>剩餘項目數： {numOfTodos}</p>
+      <StyledButton onClick={handleClick}>登出</StyledButton>
     </StyledFooter>
   );
 };

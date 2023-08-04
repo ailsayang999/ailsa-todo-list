@@ -29,11 +29,6 @@
       "title": "Learn CS50",
       "isDone": false,
       "id": 6
-    },
-    {
-      "title": "swim",
-      "isDone": false,
-      "id": 7
     }
   ]
 }

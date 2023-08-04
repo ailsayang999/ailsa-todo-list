@@ -51,3 +51,20 @@ export const register = async ({ username, email, password }) => {
     console.error('[Register Failed]: ', error);
   }
 };
+
+// 每個頁面身份驗證功能：串接 checkPermission 功能
+// 我們需要把authToken帶給後端去做驗證
+// payload指的是具有意義、有效的資料，放在body和URL裡參數也算是payload，所以get後面第二個參數整個是一個要給後端的payload
+export const checkPermission = async (authToken) => {
+  try {
+    const response = await axios.get(`${authURL}/test-token`, {
+      headers: {
+        Authorization: 'Bearer ' + authToken,
+      },
+    });
+
+    return response.data.success;
+  } catch (err) {
+    console.error('[Check Permission Failed]', err);
+  }
+};
