@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { useAuth } from 'contexts/AuthContext';
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -33,15 +33,12 @@ const StyledButton = styled.button`
 `;
 
 const Footer = ({ numOfTodos }) => {
-  //登出之後頁面跳轉到login頁面
-  const navigate = useNavigate()
+  const { logout } = useAuth();
 
-
-  //登入的話是localStorage會儲存token，那登出的話是localStorage裡的token要做移除
+  //引入logout函式
   const handleClick = () => {
-    localStorage.removeItem('authToken');
-    //登出之後頁面跳轉到login頁面
-    navigate("/login")
+    logout();
+    //logout函式會把localStorage裡的authToken去移除，然後把前端內部的資料(payload和Authenticated)做更新，所以也會讓TodoPage裡面的Authenticated改變，重新render，頁面會導向login
   };
   return (
     <StyledFooter>

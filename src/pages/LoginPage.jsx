@@ -6,16 +6,18 @@ import {
 } from 'components/common/auth.styled';
 import { ACLogoIcon } from 'assets/images';
 import { AuthInput } from 'components';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { login, checkPermission } from 'api/auth';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from 'contexts/AuthContext';
 
 const LoginPage = () => {
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+  const { login, isAuthenticated } = useAuth();
 
   //handle點擊登入按鈕時的event，在點擊登入的button時會去呼叫handleClick這個function，handleClick這個function會再去呼叫auth.js裡面的login非同步function
   const handleClick = async () => {
@@ -27,16 +29,14 @@ const LoginPage = () => {
       return;
     }
     try {
-      //用解構去把success和authToken的值從return回來的data中取出來
-      const { success, authToken } = await login({
+      //用AuthContext裡面的非同步login函式，可以拿到success的布林值
+      const success = await login({
         username,
         password,
       });
 
-      //登入成功
+      //登入成功：從後端回傳回來的 success 是 true，用success的值去顯示我們的提示訊息
       if (success) {
-        //通常我們會把我們的authToken存在localStorage
-        localStorage.setItem('authToken', authToken);
         // 登入成功訊息
         Swal.fire({
           position: 'top',
@@ -45,14 +45,9 @@ const LoginPage = () => {
           icon: 'success',
           showConfirmButton: false,
         });
-
-        //在登入成功後頁面navigate到todo頁面
-        navigate('/todo');
-
         return;
       }
-
-      // 登入失敗訊息
+      //登入失敗
       Swal.fire({
         position: 'top',
         title: '登入失敗！',
@@ -65,26 +60,15 @@ const LoginPage = () => {
     }
   };
 
-  // 要把驗證每一頁的token是否為有效的function，放到這個頁面上
+  // 我只要去check每個頁面的isAuthenticated的true或是false，來做切換頁面的動作
   useEffect(() => {
-    const checkTokenIsValid = async () => {
-      // 去localStorage取 authToken
-      const authToken = localStorage.getItem('authToken');
-      // 如果authToken不存在的話（比如說登出的時後）代表它就是一個為驗證未登入的狀態
-      if (!authToken) {
-        // 如果authToken不存在，對於Login頁面，停留在當前頁面就好
-        return
-      }
-      // 當我們的authToken是存在的話(使用者有登入的時候)，就把authToken給checkPermission檢查，他會回傳是否是有效的登入(會回傳response.data.success，那這邊success裡面可能是true或false，這個boolean會被放到result裡面)
-      const result = await checkPermission(authToken);
-      //如果這個authToken是有效的話，我們不應該停留在login頁面，要導引到todo頁面
-      if (result) {
-        navigate('/todo');
-      }
-    };
-    //當就執行checkTokenIsValid
-    checkTokenIsValid();
-  }, [navigate]); //因為有用到navigate這個function，所以就把它放到useEffect的dependency上
+    //  驗證有成功的話
+    if (isAuthenticated) {
+      // 頁面跳轉到todo頁面
+      navigate('/todo');
+    }
+    //那如果isAuthenticated不為true的話就不做任何頁面套轉的動作
+  }, [navigate, isAuthenticated]); //因為有用到navigate這個function和isAuthenticated，所以就把它放到useEffect的dependency上
 
   return (
     <AuthContainer>

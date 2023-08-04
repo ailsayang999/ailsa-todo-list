@@ -2,13 +2,16 @@ import { Footer, Header, TodoCollection, TodoInput } from 'components';
 import { useState, useEffect } from 'react';
 import { getTodos, createTodo, patchTodo, deleteTodo } from '../api/todos';
 import { useNavigate } from 'react-router-dom';
-import { checkPermission } from '../api/auth';
+import { useAuth } from 'contexts/AuthContext';
+
 
 const TodoPage = () => {
   const [inputValue, setInputValue] = useState('');
   const [todos, setTodos] = useState([]);
   const todoNums = todos.length;
   const navigate = useNavigate();
+
+  const { isAuthenticated, currentMember } = useAuth();
 
   //監聽器：handleChange
   const handleChange = (value) => {
@@ -182,31 +185,21 @@ const TodoPage = () => {
     getTodosAsync();
   }, []); //後面的dependency讓他是空的，因為只要在畫面一開始被渲染的時候才做操作
 
-  // 要把驗證每一頁的token是否為有效的function，放到這個頁面上
+  // 我只要去check每個頁面的isAuthenticated的true或是false，來做切換頁面的動作
   useEffect(() => {
-    const checkTokenIsValid = async () => {
-      // 去localStorage取 authToken
-      const authToken = localStorage.getItem('authToken');
-      // 如果authToken不存在的話（比如說登出的時後）代表它就是一個為驗證未登入的狀態
-      if (!authToken) {
-        // 如果authToken不存在，對於Todo頁面，不應停留在當前頁面，要navigate到login
-        navigate('/login');
-      }
-      // 當我們的authToken是存在的話(使用者有登入的時候)，就把authToken給checkPermission檢查，他會回傳是否是有效的登入(會回傳response.data.success，那這邊success裡面可能是true或false，這個boolean會被放到result裡面)
-      const result = await checkPermission(authToken);
-      //如果這個authToken是無效的話，我們不應該停留在todo頁面，要導引到login頁面
-      if (!result) {
-        navigate('/login');
-      }
-    };
-    //當就執行checkTokenIsValid
-    checkTokenIsValid();
-  }, [navigate]); //因為有用到navigate這個function，所以就把它放到useEffect的dependency上
+    //  驗證沒有成功的話
+    if (!isAuthenticated) {
+      // 頁面跳轉到login頁面
+      navigate('/login');
+    }
+    //那如果isAuthenticated為true的話就不做任何頁面套轉的動作
+  }, [navigate, isAuthenticated]); //因為有用到navigate這個function和isAuthenticated，所以就把它放到useEffect的dependency上
 
+  //currentMember存在的話(用?.)
   return (
     <div>
       TodoPage
-      <Header />
+      <Header username={currentMember?.name} />
       <TodoInput
         inputValue={inputValue}
         onChange={handleChange}
