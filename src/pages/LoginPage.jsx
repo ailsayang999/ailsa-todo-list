@@ -65,7 +65,7 @@ const LoginPage = () => {
     //  驗證有成功的話
     if (isAuthenticated) {
       // 頁面跳轉到todo頁面
-      navigate('/todo');
+      navigate('/todos');
     }
     //那如果isAuthenticated不為true的話就不做任何頁面套轉的動作
   }, [navigate, isAuthenticated]); //因為有用到navigate這個function和isAuthenticated，所以就把它放到useEffect的dependency上
