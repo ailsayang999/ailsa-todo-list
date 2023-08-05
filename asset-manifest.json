@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ailsa-todo-list/static/css/main.81e9703d.chunk.css",
-    "main.js": "/ailsa-todo-list/static/js/main.2dd67ed5.chunk.js",
-    "main.js.map": "/ailsa-todo-list/static/js/main.2dd67ed5.chunk.js.map",
+    "main.js": "/ailsa-todo-list/static/js/main.f755d508.chunk.js",
+    "main.js.map": "/ailsa-todo-list/static/js/main.f755d508.chunk.js.map",
     "runtime-main.js": "/ailsa-todo-list/static/js/runtime-main.bf2fa446.js",
     "runtime-main.js.map": "/ailsa-todo-list/static/js/runtime-main.bf2fa446.js.map",
     "static/js/2.0c351f1e.chunk.js": "/ailsa-todo-list/static/js/2.0c351f1e.chunk.js",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.bf2fa446.js",
     "static/js/2.0c351f1e.chunk.js",
     "static/css/main.81e9703d.chunk.css",
-    "static/js/main.2dd67ed5.chunk.js"
+    "static/js/main.f755d508.chunk.js"
   ]
 }
