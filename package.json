@@ -1,7 +1,7 @@
 {
   "name": "todolist-react",
   "version": "0.1.0",
-  "homepage": "https://github.com/ailsayang999/ailsa-todo-list",
+  "homepage": "https://ailsayang999.github.io/ailsa-todo-list",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
