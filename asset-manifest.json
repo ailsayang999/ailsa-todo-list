@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/ailsayang999/ailsa-todo-list/static/css/main.81e9703d.chunk.css",
-    "main.js": "/ailsayang999/ailsa-todo-list/static/js/main.eac9d23d.chunk.js",
-    "main.js.map": "/ailsayang999/ailsa-todo-list/static/js/main.eac9d23d.chunk.js.map",
-    "runtime-main.js": "/ailsayang999/ailsa-todo-list/static/js/runtime-main.b73ddf1c.js",
-    "runtime-main.js.map": "/ailsayang999/ailsa-todo-list/static/js/runtime-main.b73ddf1c.js.map",
-    "static/js/2.1a6b1655.chunk.js": "/ailsayang999/ailsa-todo-list/static/js/2.1a6b1655.chunk.js",
-    "static/js/2.1a6b1655.chunk.js.map": "/ailsayang999/ailsa-todo-list/static/js/2.1a6b1655.chunk.js.map",
-    "static/js/3.768507c2.chunk.js": "/ailsayang999/ailsa-todo-list/static/js/3.768507c2.chunk.js",
-    "static/js/3.768507c2.chunk.js.map": "/ailsayang999/ailsa-todo-list/static/js/3.768507c2.chunk.js.map",
-    "index.html": "/ailsayang999/ailsa-todo-list/index.html",
-    "static/css/main.81e9703d.chunk.css.map": "/ailsayang999/ailsa-todo-list/static/css/main.81e9703d.chunk.css.map",
-    "static/js/2.1a6b1655.chunk.js.LICENSE.txt": "/ailsayang999/ailsa-todo-list/static/js/2.1a6b1655.chunk.js.LICENSE.txt",
-    "static/media/ac-logo.f4e0f3cb.svg": "/ailsayang999/ailsa-todo-list/static/media/ac-logo.f4e0f3cb.svg",
-    "static/media/check-active.95ca055c.svg": "/ailsayang999/ailsa-todo-list/static/media/check-active.95ca055c.svg",
-    "static/media/check-circle.30720b46.svg": "/ailsayang999/ailsa-todo-list/static/media/check-circle.30720b46.svg",
-    "static/media/check-hover.5e00062b.svg": "/ailsayang999/ailsa-todo-list/static/media/check-hover.5e00062b.svg"
+    "main.css": "/ailsa-todo-list/static/css/main.81e9703d.chunk.css",
+    "main.js": "/ailsa-todo-list/static/js/main.2dd67ed5.chunk.js",
+    "main.js.map": "/ailsa-todo-list/static/js/main.2dd67ed5.chunk.js.map",
+    "runtime-main.js": "/ailsa-todo-list/static/js/runtime-main.bf2fa446.js",
+    "runtime-main.js.map": "/ailsa-todo-list/static/js/runtime-main.bf2fa446.js.map",
+    "static/js/2.0c351f1e.chunk.js": "/ailsa-todo-list/static/js/2.0c351f1e.chunk.js",
+    "static/js/2.0c351f1e.chunk.js.map": "/ailsa-todo-list/static/js/2.0c351f1e.chunk.js.map",
+    "static/js/3.768507c2.chunk.js": "/ailsa-todo-list/static/js/3.768507c2.chunk.js",
+    "static/js/3.768507c2.chunk.js.map": "/ailsa-todo-list/static/js/3.768507c2.chunk.js.map",
+    "index.html": "/ailsa-todo-list/index.html",
+    "static/css/main.81e9703d.chunk.css.map": "/ailsa-todo-list/static/css/main.81e9703d.chunk.css.map",
+    "static/js/2.0c351f1e.chunk.js.LICENSE.txt": "/ailsa-todo-list/static/js/2.0c351f1e.chunk.js.LICENSE.txt",
+    "static/media/ac-logo.f4e0f3cb.svg": "/ailsa-todo-list/static/media/ac-logo.f4e0f3cb.svg",
+    "static/media/check-active.95ca055c.svg": "/ailsa-todo-list/static/media/check-active.95ca055c.svg",
+    "static/media/check-circle.30720b46.svg": "/ailsa-todo-list/static/media/check-circle.30720b46.svg",
+    "static/media/check-hover.5e00062b.svg": "/ailsa-todo-list/static/media/check-hover.5e00062b.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.b73ddf1c.js",
-    "static/js/2.1a6b1655.chunk.js",
+    "static/js/runtime-main.bf2fa446.js",
+    "static/js/2.0c351f1e.chunk.js",
     "static/css/main.81e9703d.chunk.css",
-    "static/js/main.eac9d23d.chunk.js"
+    "static/js/main.2dd67ed5.chunk.js"
   ]
 }
