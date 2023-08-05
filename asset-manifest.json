@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ailsayang999/ailsa-todo-list/static/css/main.81e9703d.chunk.css",
-    "main.js": "/ailsayang999/ailsa-todo-list/static/js/main.90c344a1.chunk.js",
-    "main.js.map": "/ailsayang999/ailsa-todo-list/static/js/main.90c344a1.chunk.js.map",
+    "main.js": "/ailsayang999/ailsa-todo-list/static/js/main.eac9d23d.chunk.js",
+    "main.js.map": "/ailsayang999/ailsa-todo-list/static/js/main.eac9d23d.chunk.js.map",
     "runtime-main.js": "/ailsayang999/ailsa-todo-list/static/js/runtime-main.b73ddf1c.js",
     "runtime-main.js.map": "/ailsayang999/ailsa-todo-list/static/js/runtime-main.b73ddf1c.js.map",
     "static/js/2.1a6b1655.chunk.js": "/ailsayang999/ailsa-todo-list/static/js/2.1a6b1655.chunk.js",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.b73ddf1c.js",
     "static/js/2.1a6b1655.chunk.js",
     "static/css/main.81e9703d.chunk.css",
-    "static/js/main.90c344a1.chunk.js"
+    "static/js/main.eac9d23d.chunk.js"
   ]
 }
