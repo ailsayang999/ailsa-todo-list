@@ -40,7 +40,7 @@ export const register = async ({ username, email, password }) => {
     //我們可以在這裡console.log一下看後端傳來的data有什麼
     console.log(data);
 
-    const { authToken } = data;
+    const { authToken } = data; 
 
     if (authToken) {
       return { success: true, ...data };

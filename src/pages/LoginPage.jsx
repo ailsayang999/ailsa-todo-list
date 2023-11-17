@@ -4,7 +4,8 @@ import {
   AuthButton,
   AuthLinkText,
 } from 'components/common/auth.styled';
-import { ACLogoIcon } from 'assets/images';
+//import { ACLogoIcon } from 'assets/images';
+import { SiTodoist } from 'react-icons/si';
 import { AuthInput } from 'components';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -73,7 +74,7 @@ const LoginPage = () => {
   return (
     <AuthContainer>
       <div>
-        <ACLogoIcon />
+        <SiTodoist style={{ color: 'ff6601', fontSize: '37px' }} />
       </div>
       <h1>登入 Todo</h1>
 
