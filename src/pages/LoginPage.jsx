@@ -74,7 +74,7 @@ const LoginPage = () => {
   return (
     <AuthContainer>
       <div>
-        <SiTodoist style={{ color: 'ff6601', fontSize: '37px' }} />
+        <SiTodoist style={{ color: 'skyblue', fontSize: '37px' }} />
       </div>
       <h1>登入 Todo</h1>
 
