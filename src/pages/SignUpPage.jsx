@@ -72,7 +72,7 @@ const SignUpPage = () => {
   return (
     <AuthContainer>
       <div>
-        <SiTodoist style={{ color: 'ff6601', fontSize: '37px' }} />
+        <SiTodoist style={{ color: 'skyblue', fontSize: '37px' }} />
       </div>
       <h1>建立您的帳號</h1>
 
